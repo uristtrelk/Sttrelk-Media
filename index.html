@@ -115,6 +115,27 @@
   /* Evita que sombras u outlines den sensación de corte en los bordes */
   .card[style]{ outline-offset:0; } /* mantiene tu outline sin “agrandar” */
 }
+/* Carrusel: habilitar scroll manual en móvil */
+.carousel__track{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;               /* scroll horizontal */
+  scroll-snap-type: x mandatory; /* "snap" a cada tarjeta */
+  -webkit-overflow-scrolling: touch;
+  animation: none;               /* desactiva auto-scroll si quieres solo touch */
+}
+.carousel__item{
+  flex:0 0 80%;                  /* ancho relativo en móvil */
+  scroll-snap-align: start;
+}
+
+@media (min-width: 981px){
+  .carousel__track{
+    overflow-x:hidden;
+    animation:scroll 28s linear infinite; /* en escritorio mantiene auto loop */
+  }
+  .carousel__item{ flex:0 0 280px; }
+}
 
   </style>
 </head>
